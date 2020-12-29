@@ -1,0 +1,11 @@
+Venezia S.Lucia
+Venezia Mestre 9 0
+Padova 37 0
+Terme Euganee-Abano-Monte Grotto 50 1
+Monselice 60 1
+Rovigo 81 0
+Pontelagoscuro 109 1
+Ferrara 113 0
+S.Pietro in Casale 136 1
+Castel Maggiore 150 1
+Bologna Centrale 160 0

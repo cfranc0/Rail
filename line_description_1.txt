@@ -1,0 +1,13 @@
+Milano Centrale
+Milano Lambrate 4 1
+Cassano d'Adda 27 1
+Treviglio 33 1
+Brescia 82 0
+Desenzano del Garda 110 1
+Peschiera del Garda 124 0
+Verona Porta Nuova 147 0
+Lonigo 177 1
+Vicenza 199 0
+Padova 229 0
+Venezia Mestre 257 0
+Venezia S.Lucia 266 0
