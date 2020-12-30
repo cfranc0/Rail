@@ -3,7 +3,9 @@ LDP project repo
 
 ## Line description e timetable
 Al momento esistono 2 linee definite:
-* Venezia-Bologna
-* Milano-Venezia
+* Venezia-Bologna (```line_description.txt```)
+* Milano-Venezia (```line_description_1.txt```)
 
-Nel file ```timetables.txt``` c'è la prima delle due timetable per la linea Venezia-Bologna. Bisogna ricordarsi di fare le altre 3. Esiste un file di Google Sheets per generarli in maniera comoda.
+I file:
+* ```timetables.txt``` e ```timetables_1.txt``` sono per la prima linea
+* ```timetables_2.txt``` è per la seconda linea (seconda timetable in creazione :D)
