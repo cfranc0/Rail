@@ -1,11 +1,11 @@
 Venezia S.Lucia
-Venezia Mestre 9 0
-Padova 37 0
-Terme Euganee-Abano-Monte Grotto 50 1
-Monselice 60 1
-Rovigo 81 0
-Pontelagoscuro 109 1
-Ferrara 113 0
-S.Pietro in Casale 136 1
-Castel Maggiore 150 1
-Bologna Centrale 160 0
+Venezia Mestre 20 0
+Padova 47 0
+Terme Euganee-Abano-Monte Grotto 73 1
+Monselice 98 1
+Rovigo 131 0
+Pontelagoscuro 159 1
+Ferrara 183 0
+S.Pietro in Casale 206 1
+Castel Maggiore 250 1
+Bologna Centrale 274 0
