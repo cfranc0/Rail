@@ -4,9 +4,11 @@
  *@author Carlotta Schiavo, matr: 1217866
  *@version 1.0
  */
-
+#ifndef TRAIN_H
+#define TRAIN_H
 #include <iostream>
 #include <List>
+
 /*Classe di base*/
 class Train {
 	protected:
@@ -19,9 +21,6 @@ class Train {
 		int delay;//ritardo
 		bool exists;//(true=il treno sta ancora viaggiando, false=il treno arrivato a destinazione)
 		std::list<int>timeTable;//lista che contiene gli orari di arrivo nelle varie stazioni
-		//DA TOGLIERE IL COMMENTO
-		//RailLine_piece* whereOnTheLine; puntatore a oggetto RailLine_piece
-		
 		
 	public:
 		/*metodi setter e getter che serviranno per la simulazione*/
@@ -73,48 +72,23 @@ class Train {
 		* getTimeTable
 		* @return timeTable
 		*/
-
 		std::list<int> getTimeTable()const { return timeTable;}
 
-		
-		//DA TOGLIERE COMMENTO
-
-
-
-
-		/*getWhereOnTheLine
-		* @return whereOnTheLine, in che pezzo di linea si trova il treno
+		/*toggleExists
+		* nega lo stato del membro "exists"
 		*/
-		/*
-		RailLine_piece* getWhereOnTheLine(){return whereOnTheLine;}
-		*/
-
-		/*setWhereOnTheLine
-		* @param p,nuovo pezzo di linea nel quale si trova il treno
-		*/
-		/*
-		void getWhereOnTheLine(RailLine_piece* p){ whereOnTheLine=p;}
-		*/
-
-
-		/*!
-		 *  ////////////////////////////////////////////////////////
-		 */
+		void toggleExists() { !exists; }
 
 		/*setTrack
 		* @param t, track
 		*/
-		void setTrack(int t) { track = t; }
+		void setTrack(int t);
 
 		/*setDelay
 		* @param d, delay
 	    */
-		void setDelay(int d) { delay = d;}
+		void setDelay(int d);
 
-		/*setExist
-		* nega lo stato del membro "exists"
-		*/
-		void setExist() { !exists; }
 
 		/*setKm
 		* @param kmm, km
@@ -224,4 +198,5 @@ class High_speed_super : public Train {
 		*/
 		void setSpeed(int s);
 };
-
+std::ostream& operator<<(std::ostream& os, const Train& _line); //Mette a video un Treno
+#endif //!TRAIN_H
