@@ -7,8 +7,7 @@
  *@author Carlotta Schiavo, matr: 1217866
  *@version 1.0
  */
-#ifndef STATION_H
-#define STATION_H
+
 #include "Station.h"
 #include <exception> 
  
@@ -63,4 +62,10 @@ Local_station::~Local_station() {
 	type = -1;
 }
 
-#endif //!STATION_H
+std::ostream& operator<<(std::ostream& os, const Station& s) {
+	os << "Nome: " << s.getName()<<"\n";
+	os << "Distanza da origine: " << s.getKm() << "\n";
+	os << "Tipo: " << s.getType() << "\n";
+	
+	return os;
+}

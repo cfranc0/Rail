@@ -4,7 +4,8 @@
  *@author Carlotta Schiavo, matr: 1217866
  *@version 1.0
  */
-
+#ifndef STATION_H
+#define STATION_H
 #include <iostream>
 
  /*INVARIANTI:
@@ -12,6 +13,7 @@
  *		- 0: stazione principale (Main_station)
  *		- 1: stazione locale (Local_station)
  */
+
 
 /*Classe di base*/
 class Station {
@@ -107,6 +109,6 @@ class Local_station : public Station {
 		~Local_station();
 
 };
+std::ostream& operator<<(std::ostream& os, const Station& _line); //Mette a video la Stazione
 
-
-
+#endif //!STATION_H
