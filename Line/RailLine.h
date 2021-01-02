@@ -1,6 +1,8 @@
 //LEONARDO PINTON
 
-#pragma once
+#ifndef RAILLINE_H
+#define RAILLINE_H
+
 #include <iostream>
 #include <vector>
 #include <list>
@@ -14,6 +16,7 @@ public:
 	int getFrom() const; // return the initial point of a pice of line
 	int getTo() const; // return the ending point of a pice of line
 	int getPieceType() const; // return the type of the piece of the line
+	bool getBlock() const;
 	const std::vector<int> getRailSpeedLimit() const; // Return the vector with the speed limit of that pice of line
 	const std::list<Train*> getCurrentTrains() const; // Return the list with the current trains on a pice of line
 
@@ -62,3 +65,4 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const RailLine& _line); // print the line
+#endif //!RAILLINE_H

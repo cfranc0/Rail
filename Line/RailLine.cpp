@@ -1,8 +1,6 @@
 //LEONARDO PINTON
 
 #include "RailLine.h"
-#include "Station.h"
-#include "Train.h"
 
 using namespace std;
 
@@ -58,6 +56,10 @@ int RailLine_piece::getPieceType() const{
 	return pieceType;
 }
 
+bool RailLine_piece::getBlock() const{
+	return doesBlockTraffic;
+}
+
 const vector<int> RailLine_piece::getRailSpeedLimit() const{
 	return railSpeedLimit;
 }
@@ -85,19 +87,26 @@ void RailLine::generateLine(list<Station> stations) {
 	}
 }
 
-list<Train*> RailLine::whosThere(int km_from, int km_to) { // WORK IN PROGRESS
+list<Train*> RailLine::whosThere(int km_from, int km_to) {
 	list<Train*> trains;
 	list<RailLine_piece>::iterator l = line.begin();
 	for (l; l != line.end(); ++l) {
-		if(l->getTo() >= km_from && l->getFrom() - km_to > 0){
-				list<Train*> trainsTemp = l->currentTrains();
+		if(l->getBlock() == true && l->getTo() >= km_from && l->getFrom() <= km_to){
+				list<Train*> trainsTemp = l->getCurrentTrains();
 				list<Train*>::iterator t = trainsTemp.begin();
 				for (t; t != trainsTemp.end(); ++t) {
 					trains.push_back(*t);
 				}
 			}
+			else{
+				list<Train*> trainsTemp = l->getCurrentTrains();
+				list<Train*>::iterator t = trainsTemp.begin();
+				for (t; t != trainsTemp.end(); ++t) {
+					trains.push_back(*t);
+			}
+			break;
 		}
-	return t;
+	return trains;
 }
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
