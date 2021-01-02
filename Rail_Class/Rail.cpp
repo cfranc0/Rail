@@ -54,7 +54,7 @@ void Rail::loadLine(string ld){
 	ist.close();
 	line.generateLine(stationsList);
 }//loadLine
-
+//DA TERMINARE
 void Rail::loadTimeTable(string tt) {
 	//Apertura file
 	string fileName = tt;

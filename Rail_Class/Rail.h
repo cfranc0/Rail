@@ -24,7 +24,7 @@ class Rail {
 		RailLine line;
 		std::list<Station>stationsList;
 		std::list<Train*>trainsList;
-
+		//DA TERMINARE
 		/*funzioni di utilita'*/
 		int calculateTime(int train_t, int station_t, int arr_t, int dur_h, int dist_km,int isTerminal);
 		int getMaxSpeedFromType(int type);
