@@ -17,13 +17,18 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <exception>
 
 class Rail {
 	private:
 		RailLine line;
 		std::list<Station>stationsList;
 		std::list<Train*>trainsList;
-	
+
+		/*funzioni di utilita'*/
+		int calculateTime(int train_t, int station_t, int arr_t, int dur_h, int dist_km,int isTerminal);
+		int getMaxSpeedFromType(int type);
+		Train* createTrain(int type,int ID,int direc,std::list<int>& time);
 	public:
 		/**
 		 *loadLine
@@ -52,7 +57,7 @@ class Rail {
 
 		/*FUNZIONI CHE NON SO SE POSSONO SERVIRE MA CHE INTANTO USO PER IL TEST*/
 		std::list<Station> getStationsList() { return stationsList; }
-		//std::list<Train> getTrainsList() { return trainsList; }
+		std::list<Train*> getTrainsList() { return trainsList; }
 
 };
 
