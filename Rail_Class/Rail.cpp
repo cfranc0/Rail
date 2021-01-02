@@ -42,7 +42,7 @@ void Rail::loadLine(std::string ld){
 		}
 
 		//creazione oggetti Station e inserimento in lista
-		if(num[0]==0){
+		if(num[1]==0){
 			Main_station m(statName,num[0]);
 			stationsList.push_back(m);
 		}
