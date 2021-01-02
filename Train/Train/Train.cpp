@@ -44,7 +44,7 @@
 	//costruttore
 	Regional::Regional(const int id, int d, std::list<int>& time){
 		ID = id;
-		type = 0;
+		type = 1;
 		track = -1;
 		direction = d;
 		speed = 0;
@@ -77,7 +77,7 @@
 	//costruttore
 	High_speed::High_speed(int id, int d, std::list<int>& time){
 		ID = id;
-		type = 1;
+		type = 2;
 		track = -1;
 		direction = d;
 		speed = 0;
@@ -110,7 +110,7 @@
 	//costruttore
 	High_speed_super::High_speed_super(int id, int d, std::list<int>& time) {
 		ID = id;
-		type = 2;
+		type = 3;
 		track = -1;
 		direction = d;
 		speed = 0;
