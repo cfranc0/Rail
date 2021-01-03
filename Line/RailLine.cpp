@@ -94,20 +94,18 @@ list<Train*> RailLine::whosThere(int km_from, int km_to) {
 		if(l->getBlock() == true && l->getTo() >= km_from && l->getFrom() <= km_to){
 				list<Train*> trainsTemp = l->getCurrentTrains();
 				list<Train*>::iterator t = trainsTemp.begin();
-				for (t; t != trainsTemp.end(); ++t) {
+				for (t; t != trainsTemp.end(); ++t)
 					trains.push_back(*t);
-				}
 			}
 			else{
 				list<Train*> trainsTemp = l->getCurrentTrains();
 				list<Train*>::iterator t = trainsTemp.begin();
-				for (t; t != trainsTemp.end(); ++t) {
+				for (t; t != trainsTemp.end(); ++t)
 					trains.push_back(*t);
-			}
-			break;
+				break;
 		}
-	return trains;
 	}
+	return trains;
 }
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
