@@ -78,6 +78,8 @@ void RailLine::generateLine(list<Station> stations) {
 	list<Station>::iterator prev = stations.begin();
 	++r;
 	for (r; r != stations.end(); ++r, ++prev){
+		if(prev == stations.begin())
+			line.push_back(RailLine_piece_station(prev->getKm(), prev->getKm(), prev->getType()));
 		line.push_back(RailLine_piece_approach(prev->getKm(), prev->getKm() + 5, prev->getType()));
 		line.push_back(RailLine_piece_parking(prev->getKm() + 5, prev->getKm() + 5, prev->getType()));
 		line.push_back(RailLine_piece_standard(prev->getKm() + 5, r->getKm() - 5));
