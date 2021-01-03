@@ -107,6 +107,7 @@ list<Train*> RailLine::whosThere(int km_from, int km_to) {
 			break;
 		}
 	return trains;
+	}
 }
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
