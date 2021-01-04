@@ -83,7 +83,7 @@ public:
 	* @param km_to : Last km of the range
 	* @return a list of train that are between the specified Kms
 	*/
-	std::list<Train*> whosThere(int km_from, int km_to);
+	//std::list<Train*> whosThere(int km_from, int km_to);
 
 	/**
 	* getRailLinePiece

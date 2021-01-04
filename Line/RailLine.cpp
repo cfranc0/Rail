@@ -14,9 +14,6 @@ RailLine_piece_standard::RailLine_piece_standard(int _from, int _to) {
 	pieceType = 0;
 	doesBlockTraffic = true;
 	railSpeedLimit = { -1, -1 };
-	/*for (auto t = currentTrains.begin(); t != currentTrains.end(); ++t) {
-		t->
-	}*/
 }
 
 RailLine_piece_approach::RailLine_piece_approach(int _from, int _to, int type) {
@@ -96,11 +93,11 @@ void RailLine::generateLine(list<Station> stations) {
 		line.push_back(RailLine_piece_parking(currS->getKm() - 5, currS->getKm() - 5, currS->getType()));
 		line.push_back(RailLine_piece_approach(currS->getKm() - 5, currS->getKm(), currS->getType()));
 		line.push_back(RailLine_piece_station(currS->getKm(), currS->getKm(), currS->getType()));
+		lineLength = currS->getKm();
 	}
-	lineLength = currS->getKm();
 }
 
-list<Train*> RailLine::whosThere(int km_from, int km_to) {
+/*list<Train*> RailLine::whosThere(int km_from, int km_to) {
 	list<Train*> trains;
 	list<RailLine_piece>::iterator l = line.begin();
 	for (l; l != line.end(); ++l) {
@@ -119,7 +116,7 @@ list<Train*> RailLine::whosThere(int km_from, int km_to) {
 		}
 	}
 	return trains;
-}
+}*/
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km) {
 
