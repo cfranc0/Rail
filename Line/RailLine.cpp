@@ -14,6 +14,9 @@ RailLine_piece_standard::RailLine_piece_standard(int _from, int _to) {
 	pieceType = 0;
 	doesBlockTraffic = true;
 	railSpeedLimit = { -1, -1 };
+	/*for (auto t = currentTrains.begin(); t != currentTrains.end(); ++t) {
+		t->
+	}*/
 }
 
 RailLine_piece_approach::RailLine_piece_approach(int _from, int _to, int type) {
@@ -94,7 +97,7 @@ void RailLine::generateLine(list<Station> stations) {
 		line.push_back(RailLine_piece_approach(currS->getKm() - 5, currS->getKm(), currS->getType()));
 		line.push_back(RailLine_piece_station(currS->getKm(), currS->getKm(), currS->getType()));
 	}
-	lineSize = line.size();
+	lineLength = currS->getKm();
 }
 
 list<Train*> RailLine::whosThere(int km_from, int km_to) {
@@ -134,9 +137,9 @@ const std::vector<int> RailLine::getSpeedLimit(int km) {
 	return l->getRailSpeedLimit();
 }
 
-int RailLine::getLineSize() const{
+int RailLine::getLineLength() const{
 
-	return lineSize;
+	return lineLength;
 }
 
 /* Definition of the overloading of the operator<< */

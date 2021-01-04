@@ -110,11 +110,11 @@ public:
 	* getLineSize
 	* @return the size of the line
 	*/
-	int getLineSize() const;
+	int getLineLength() const;
 
 private:
 	std::list<RailLine_piece> line; // Contains all the pieces that form a line
-	int lineSize;
+	int lineLength; // Length of the line
 };
 
 /* Derived classes */
