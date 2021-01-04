@@ -90,8 +90,17 @@ public:
 	*/
 	RailLine getLine() const { return line; }
 
-	/*simulatore*/
+	/**
+	 * Simulate the working of the line and the trains on top of it
+	 * outputting to the console the succession of events
+	 */
 	void simulate();
+
+	/**
+	 * Provides a list of the trains that exist within the specified
+	 * km range.
+	 */
+	list<Train*> whosThere(int _f, int _t);
 
 };
 //overload operator<<
