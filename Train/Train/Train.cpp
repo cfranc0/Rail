@@ -40,7 +40,7 @@ Regional::Regional(const int id, int d, std::list<int>& time) {
 	speed = 0;
 	km = -1;
 	delay = 0;
-	exists = true;
+	exists = false;
 	timeTable = time;
 }
 
@@ -73,7 +73,7 @@ High_speed::High_speed(int id, int d, std::list<int>& time) {
 	speed = 0;
 	km = -1;
 	delay = 0;
-	exists = true;
+	exists = false;
 	timeTable = time;
 }
 
@@ -106,7 +106,7 @@ High_speed_super::High_speed_super(int id, int d, std::list<int>& time) {
 	speed = 0;
 	km = -1;
 	delay = 0;
-	exists = true;
+	exists = false;
 	timeTable = time;
 }
 
@@ -129,13 +129,15 @@ void High_speed_super::setSpeed(int s) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Train& t) {
-	os << "ID:" << t.getID() << "\n";
-	os << "Type:" << t.getType() << "\n";
-	os << "Track:" << t.getTrack() << "\n";
-	os << "Direction:" << t.getDirection() << "\n";
-	os << "Speed:" << t.getSpeed() << "\n";
-	os << "Km (where is):" << t.getKm() << "\n";
-	os << "Delay:" << t.getDelay() << "\n";
-	os << "Exists ?:" << t.getExists() << "\n";
+	os << "┌──\n";
+	os << "│        ID " << t.getID() << "\n";
+	os << "│      Type " << t.getType() << "\n";
+	os << "│     Track " << t.getTrack() << "\n";
+	os << "│ Direction " << t.getDirection() << "\n";
+	os << "│     Speed " << t.getSpeed() << "\n";
+	os << "│        Km " << t.getKm() << "\n";
+	os << "│     Delay " << t.getDelay() << "\n";
+	os << "│    Exists " << t.getExists() << "\n";
+	os << "└──\n";
 	return os;
 }

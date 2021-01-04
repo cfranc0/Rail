@@ -17,7 +17,7 @@ protected:
 	int type;//tipo di treno: 0=Regional, 1=High_speed, 2= High_speed_super
 	int track;//binario sul quale viaggia
 	int direction;//direzione verso cui viaggia (0=partenza da origine, 1=partenza da capolinea)
-	int speed;//velocità di crociera
+	int speed;//velocitï¿½ di crociera
 	int km;//km della linea al quale si trova
 	int delay;//ritardo
 	bool exists;//(true=il treno sta ancora viaggiando, false=il treno arrivato a destinazione)
@@ -84,11 +84,11 @@ public:
 	/*toggleExists
 	* nega lo stato del membro "exists"
 	*/
-	void toggleExists() { !exists; }
+	void toggleExists() { exists = !exists; }
 
 	/*setTrack
 	* @param t, track
-	* @throw InvalidTrackException, se il valore del binario è fuori dal range [0,6]
+	* @throw InvalidTrackException, se il valore del binario ï¿½ fuori dal range [0,6]
 	*/
 	void setTrack(int t);
 
@@ -107,13 +107,13 @@ public:
 
 	/**
 	 * getMaxSpeed()
-	 * @return la massima velocità che il treno può raggiungere
+	 * @return la massima velocitï¿½ che il treno puï¿½ raggiungere
 	 */
 	virtual int getMaxSpeed()const = 0;
 
 	/*setSpeed
 	* @param s, speed
-	* @throw InvalidValueOfSpeedException, se la velocità di crociera
+	* @throw InvalidValueOfSpeedException, se la velocitï¿½ di crociera
 	* e' fuori dal range specifico del tipo di treno
 	*/
 	virtual void setSpeed(int s) = 0;
@@ -141,7 +141,7 @@ public:
 
 	/**
 	* getMaxSpeed()
-	* @return la massima velocità che il treno può raggiungere
+	* @return la massima velocitï¿½ che il treno puï¿½ raggiungere
 	*/
 	int getMaxSpeed()const { return MAX_SPEED; }
 
@@ -171,7 +171,7 @@ public:
 
 	/**
 	* getMaxSpeed()
-	* @return la massima velocità che il treno può raggiungere
+	* @return la massima velocitï¿½ che il treno puï¿½ raggiungere
 	*/
 	int getMaxSpeed()const { return MAX_SPEED; }
 
@@ -200,7 +200,7 @@ public:
 
 	/**
 	* getMaxSpeed()
-	* @return la massima velocità che il treno può raggiungere
+	* @return la massima velocitï¿½ che il treno puï¿½ raggiungere
 	*/
 	int getMaxSpeed()const { return MAX_SPEED; }
 
