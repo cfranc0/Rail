@@ -4,11 +4,11 @@
  *@author Carlotta Schiavo, matr: 1217866
  *@version 1.0
  */
-
 #include "Rail.h"
 using namespace std;
 
 void Rail::loadLine(string ld) {
+
 	//Apertura file
 	string fileName = ld;
 	ifstream ist{ fileName };
@@ -127,6 +127,7 @@ void Rail::loadTimeTable(string tt) {
 			/*controllo della validità dell'orario di arrivo*/
 			if (duration_min < time || arrival_t == 0) {
 				time = time + departure_t;
+				cout << ID << " Arriving time for station " << (count_stat - 3) << " change to: " << time << "\n";
 			}
 			else {
 				time = duration_min + departure_t;
@@ -140,12 +141,24 @@ void Rail::loadTimeTable(string tt) {
 			count_stat++;
 		}//for
 
-		Train* t = createTrain(train_type, ID, direc, timeTablelist);
+		/*Creazione del treno ed inserimento in trainsList */
+
+		Train* t;
+		switch (train_type) {
+		case 1:
+			t = new Regional(ID, direc, timeTablelist);
+			break;
+		case 2:
+			t = new High_speed(ID, direc, timeTablelist);
+			break;
+		case 3:
+			t = new High_speed_super(ID, direc, timeTablelist);
+			break;
+		}
+
 		trainsList.push_back(t);
 
 	}//while
-
-	cout << trainsList.size();
 }
 
 
@@ -172,20 +185,4 @@ double Rail::getMaxSpeedFromType(int train_t) {
 		return 240;
 	}
 	return 300;
-}
-
-Train* Rail::createTrain(int type, int ID, int direc, list<int>& time) {
-	if (type == 1) {
-		Regional t(ID, direc, time);
-		Train* tr = &t;
-		return tr;
-	}
-	else if (type == 2) {
-		High_speed t(ID, direc, time);
-		Train* tr = &t;
-		return tr;
-	}
-	High_speed_super t(ID, direc, time);
-	Train* tr = &t;
-	return tr;
 }

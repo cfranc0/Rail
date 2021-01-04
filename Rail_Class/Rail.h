@@ -5,7 +5,6 @@
  *@version 1.0
  */
 
-
 #ifndef RAIL_H
 #define RAIL_H
 
@@ -21,6 +20,7 @@
 #include <exception>
 
 class Rail {
+
 private:
 	RailLine line;
 	std::list<Station>stationsList;
@@ -46,19 +46,8 @@ private:
 	 */
 	double getMaxSpeedFromType(int type);
 
-	/**
-	 * createTrain
-	 * funzione che crea un treno (a seconda del tipo indicato)
-	 * @param type
-	 * @param ID
-	 * @param direc
-	 * @param time
-	 * @return Train*
-	 */
-	Train* createTrain(int type, int ID, int direc, std::list<int>& time);
 public:
-
-	/*classi di eccezione*/
+	/*classe di eccezione*/
 	class EmptyStationListException {};
 	class InvalidInputFile {};
 	/**
@@ -68,7 +57,6 @@ public:
 	 *Riempita la lista, invoca il metodo "generateLine" della classe
 	 *RailLine che andrà a generare la linea ferroviaria.
 	 *@param ld, il file "line_description.txt"
-	 *@throw InvalidInputFile, se non trova il file di input
 	 */
 	void loadLine(std::string ld);
 
@@ -81,11 +69,6 @@ public:
 	 *siano conformi, se necessario li modifica.
 	 *
 	 *@param ld, il file "line_description.txt"
-	 *
-	 *@throw InvalidInputFile, se non trova il file di input
-	 *@throw EmptyStationListException, se la lista delle stazioni è vuota. 
-	 *(Prima di invocare tale metodo e' necessario invocare il metodo loadLine
-	 * il quale andra' a riempire la lista delle stazioni)
 	 */
 	void loadTimeTable(std::string tt);
 
@@ -107,10 +90,12 @@ public:
 	*/
 	RailLine getLine() const { return line; }
 
+	/*simulatore*/
+	void simulate();
+
 };
 //overload operator<<
 std::ostream& operator<<(std::ostream& os, const Rail& _rail);
-
 #endif // RAIL_H
 
 

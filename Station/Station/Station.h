@@ -23,6 +23,9 @@ class Station {
 		int type;//tipo della stazione
 
 	public:
+
+		/*eccezione*/
+		class InvalidValueOfKmException {};
 		/**
 		* getName
 		* @return nome stazione

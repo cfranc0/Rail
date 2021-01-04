@@ -9,13 +9,13 @@
  */
 
 #include "Station.h"
-#include <exception> 
+
  
 /*Definizione funzioni membro classe Main_station*/
 
 //costruttore
 Main_station::Main_station(std::string n, int kmm) {
-	if (kmm < 0) throw std::exception{ "Il numero di km deve essere strettamente positivo !" };
+	if (kmm < 0) throw InvalidValueOfKmException{};
 	name = n;
 	km = kmm;
 	type = 0; //tipo 0 --> Stazione Principale
@@ -42,7 +42,7 @@ Main_station::~Main_station() {
 //costruttore
 Local_station::Local_station(std::string n, int kmm) 
 {
-	if (kmm < 0) throw std::exception{ "Il numero di km deve essere strettamente positivo !" };
+	if (kmm < 0) throw InvalidValueOfKmException{};
 	name = n;
 	km = kmm;
 	type = 1; //tipo 1 --> Stazione Locale
