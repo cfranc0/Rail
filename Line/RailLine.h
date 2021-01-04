@@ -87,14 +87,14 @@ public:
 
 	/**
 	* getRailLinePiece
-	* @param km :
+	* @param km : Specified km
 	* @return the iterator that points to the piece of line that contains the specified km
 	*/
 	std::list<RailLine_piece>::iterator getRailLinePiece(int km);
 
 	/**
 	* getSpeedLimit
-	* @param km :
+	* @param km : Specified km
 	* @return the vector with the speed limit for the piece of line that contains the specified km
 	*/
 	const std::vector<int> getSpeedLimit(int km);
@@ -105,8 +105,16 @@ public:
 	*/
 	const std::list<RailLine_piece> getLine() const;
 
+
+	/**
+	* getLineSize
+	* @return the size of the line
+	*/
+	int getLineSize() const;
+
 private:
-	std::list<RailLine_piece> line; // Contains all the pices that form a line
+	std::list<RailLine_piece> line; // Contains all the pieces that form a line
+	int lineSize;
 };
 
 /* Derived classes */

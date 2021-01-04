@@ -94,6 +94,7 @@ void RailLine::generateLine(list<Station> stations) {
 		line.push_back(RailLine_piece_approach(currS->getKm() - 5, currS->getKm(), currS->getType()));
 		line.push_back(RailLine_piece_station(currS->getKm(), currS->getKm(), currS->getType()));
 	}
+	lineSize = line.size();
 }
 
 list<Train*> RailLine::whosThere(int km_from, int km_to) {
@@ -104,20 +105,20 @@ list<Train*> RailLine::whosThere(int km_from, int km_to) {
 				list<Train*> trainsTemp = l->getCurrentTrains();
 				list<Train*>::iterator t = trainsTemp.begin();
 				for (t; t != trainsTemp.end(); ++t)
-					trains.push_back(*t);
+					trains.push_back(&(*t));
 			}
 			else{
 				list<Train*> trainsTemp = l->getCurrentTrains();
 				list<Train*>::iterator t = trainsTemp.begin();
 				for (t; t != trainsTemp.end(); ++t)
-					trains.push_back(*t);
+					trains.push_back(&(*t));
 				break;
 		}
 	}
 	return trains;
 }
 
-list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
+list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km) {
 
 	list<RailLine_piece>::iterator l = line.begin();
 	for (l;  l != line.end(); ++l){
@@ -127,10 +128,15 @@ list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
 	return l;
 }
 
-const std::vector<int> RailLine::getSpeedLimit(int km){
+const std::vector<int> RailLine::getSpeedLimit(int km) {
 
 	list<RailLine_piece>::iterator l = getRailLinePiece(km);
 	return l->getRailSpeedLimit();
+}
+
+int RailLine::getLineSize() const{
+
+	return lineSize;
 }
 
 /* Definition of the overloading of the operator<< */
