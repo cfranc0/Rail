@@ -9,6 +9,7 @@
 #include <iostream>
 #include <List>
 
+
  /*Classe di base*/
 class Train {
 protected:

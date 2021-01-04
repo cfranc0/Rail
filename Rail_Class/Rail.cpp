@@ -4,6 +4,7 @@
  *@author Carlotta Schiavo, matr: 1217866
  *@version 1.0
  */
+
 #include "Rail.h"
 using namespace std;
 

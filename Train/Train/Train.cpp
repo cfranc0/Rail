@@ -5,7 +5,6 @@
  *@version 1.0
  */
 
-
 #include "Train.h"
 
  /*Definizione funzione classe base*/
