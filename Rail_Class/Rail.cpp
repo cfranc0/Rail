@@ -11,7 +11,7 @@ void Rail::loadLine(string ld) {
 	//Apertura file
 	string fileName = ld;
 	ifstream ist{ fileName };
-	if (!ist) throw exception{ "File non trovato" };
+	if (!ist) throw InvalidInputFile{};
 
 	string s = " ";//linea appena letta
 	string temp = "";//varibile di supporto
@@ -57,10 +57,15 @@ void Rail::loadLine(string ld) {
 
 
 void Rail::loadTimeTable(string tt) {
+
+	//controllo che stationList sia piena
+	if (stationsList.size() == 0) {
+		throw EmptyStationListException{};
+	}
 	//Apertura file
 	string fileName = tt;
 	ifstream ist{ fileName };
-	if (!ist) throw exception{ "File non trovato" };
+	if (!ist) throw InvalidInputFile{};
 
 	string s = " ";//linea appena letta
 	int tmp = 0;//varibile di supporto

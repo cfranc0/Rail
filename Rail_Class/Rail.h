@@ -57,6 +57,9 @@ private:
 	Train* createTrain(int type, int ID, int direc, std::list<int>& time);
 public:
 
+	/*classi di eccezione*/
+	class EmptyStationListException {};
+	class InvalidInputFile {};
 	/**
 	 *loadLine
 	 *funzione membro che legge da file i dati sulle stazioni
@@ -64,6 +67,7 @@ public:
 	 *Riempita la lista, invoca il metodo "generateLine" della classe
 	 *RailLine che andrà a generare la linea ferroviaria.
 	 *@param ld, il file "line_description.txt"
+	 *@throw InvalidInputFile, se non trova il file di input
 	 */
 	void loadLine(std::string ld);
 
@@ -76,6 +80,11 @@ public:
 	 *siano conformi, se necessario li modifica.
 	 *
 	 *@param ld, il file "line_description.txt"
+	 *
+	 *@throw InvalidInputFile, se non trova il file di input
+	 *@throw EmptyStationListException, se la lista delle stazioni è vuota. 
+	 *(Prima di invocare tale metodo e' necessario invocare il metodo loadLine
+	 * il quale andra' a riempire la lista delle stazioni)
 	 */
 	void loadTimeTable(std::string tt);
 
@@ -98,6 +107,8 @@ public:
 	RailLine getLine() const { return line; }
 
 };
+//overload operator<<
+std::ostream& operator<<(std::ostream& os, const Rail& _rail);
 
 #endif // RAIL_H
 
