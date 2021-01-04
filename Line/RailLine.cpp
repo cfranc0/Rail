@@ -1,9 +1,13 @@
-//LEONARDO PINTON
+/**
+ *@author Leonardo Pinton, 1230955
+ *@code RailLine.cpp
+ */
 
 #include "RailLine.h"
 
 using namespace std;
 
+/* Constructors of the derived classes */
 RailLine_piece_standard::RailLine_piece_standard(int _from, int _to) {
 	from = _from;
 	to = _to;
@@ -44,6 +48,7 @@ RailLine_piece_parking::RailLine_piece_parking(int _from, int _to, int type) {
 		railSpeedLimit = { 80, 80, 80, 80, -1, -1 };
 }
 
+/* Definition of RailLine_piece member functions */
 int RailLine_piece::getFrom() const{
 	return from;
 }
@@ -73,19 +78,21 @@ const list<RailLine_piece> RailLine::getLine() const {
 	return line;
 }
 
+
+/* Definition of RailLine member functions*/
 void RailLine::generateLine(list<Station> stations) {
-	list<Station>::iterator r = stations.begin();
-	list<Station>::iterator prev = stations.begin();
-	++r;
-	for (r; r != stations.end(); ++r, ++prev){
-		if(prev == stations.begin())
-			line.push_back(RailLine_piece_station(prev->getKm(), prev->getKm(), prev->getType()));
-		line.push_back(RailLine_piece_approach(prev->getKm(), prev->getKm() + 5, prev->getType()));
-		line.push_back(RailLine_piece_parking(prev->getKm() + 5, prev->getKm() + 5, prev->getType()));
-		line.push_back(RailLine_piece_standard(prev->getKm() + 5, r->getKm() - 5));
-		line.push_back(RailLine_piece_parking(r->getKm() - 5, r->getKm() - 5, r->getType()));
-		line.push_back(RailLine_piece_approach(r->getKm() - 5, r->getKm(), r->getType()));
-		line.push_back(RailLine_piece_station(r->getKm(), r->getKm(), r->getType()));
+	list<Station>::iterator currS = stations.begin();
+	list<Station>::iterator prevS = stations.begin();
+	++currS;
+	for (currS; currS != stations.end(); ++currS, ++prevS){
+		if(prevS == stations.begin())
+			line.push_back(RailLine_piece_station(prevS->getKm(), prevS->getKm(), prevS->getType()));
+		line.push_back(RailLine_piece_approach(prevS->getKm(), prevS->getKm() + 5, prevS->getType()));
+		line.push_back(RailLine_piece_parking(prevS->getKm() + 5, prevS->getKm() + 5, prevS->getType()));
+		line.push_back(RailLine_piece_standard(prevS->getKm() + 5, currS->getKm() - 5));
+		line.push_back(RailLine_piece_parking(currS->getKm() - 5, currS->getKm() - 5, currS->getType()));
+		line.push_back(RailLine_piece_approach(currS->getKm() - 5, currS->getKm(), currS->getType()));
+		line.push_back(RailLine_piece_station(currS->getKm(), currS->getKm(), currS->getType()));
 	}
 }
 
@@ -112,20 +119,21 @@ list<Train*> RailLine::whosThere(int km_from, int km_to) {
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km){
 
-	list<RailLine_piece>::iterator t = line.begin();
-	for (t;  t != line.end(); ++t){
-		if(t->getFrom() <= km && t->getTo() >= km)
+	list<RailLine_piece>::iterator l = line.begin();
+	for (l;  l != line.end(); ++l){
+		if(l->getFrom() <= km && l->getTo() >= km)
 			break;
 	}
-	return t;
+	return l;
 }
 
 const std::vector<int> RailLine::getSpeedLimit(int km){
 
-	list<RailLine_piece>::iterator t = getRailLinePiece(km);
-	return t->getRailSpeedLimit();
+	list<RailLine_piece>::iterator l = getRailLinePiece(km);
+	return l->getRailSpeedLimit();
 }
 
+/* Definition of the overloading of the operator<< */
 ostream& operator<<(ostream& os, const RailLine& _line) {
 	list<RailLine_piece> _l = _line.getLine();
 	list<RailLine_piece>::iterator lineIt = _l.begin();
