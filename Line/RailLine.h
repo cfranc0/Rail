@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <iterator>
 
 #include "Station.h"
 #include "Train.h"
@@ -84,6 +85,10 @@ public:
 	* @return a list of train that are between the specified Kms
 	*/
 	//std::list<Train*> whosThere(int km_from, int km_to);
+
+	//int nextStation(int km, int direction);
+
+	int RailLine::nextParking(int km, int direction)
 
 	/**
 	* getRailLinePiece

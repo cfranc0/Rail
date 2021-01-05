@@ -118,12 +118,142 @@ void RailLine::generateLine(list<Station> stations) {
 	return trains;
 }*/
 
+/*int RailLine::nextStation(int km, int direction){
+	list<RailLine_piece>::iterator l = getRailLinePiece(km);
+	list<RailLine_piece>::iterator l1 = l;
+	if(direction == 1){
+
+		switch (l->getPieceType()) {
+			case 0:
+				advance(l, 3);
+				return l;
+				break;
+
+			case 1:
+				if(l->getTo() == (++l1)->getFrom()){
+					--l1;
+					return (++l);
+				}
+				else{
+					advance(l, 5);
+					return l;
+				}
+				break;
+
+			case 2:
+				advance(l, 6);
+				return l;
+				break;
+
+			case 3:
+			if(l->getTo() == (++l1)->getFrom()){
+				--l1;
+				advance(l, 4);
+				return l;
+			}
+			else{
+				advance(l, 2);
+				return l;
+			}
+			break;
+		}
+	}
+}*/
+
+int RailLine::nextParking(int km, int direction) {
+	list<RailLine_piece>::iterator l = getRailLinePiece(km);
+	list<RailLine_piece>::iterator l1 = l;
+	list<RailLine_piece>::iterator l2 = l;
+	if (direction == 1) {
+
+		switch (l->getPieceType()) {
+		case 0:
+			advance(l, 1);
+			return l->getFrom();
+			break;
+
+		case 1:
+			if ((++l1)->getPieceType() == 3) {
+				advance(l, 1);
+				return l->getFrom();
+			}
+			else {
+				advance(l, 3);
+				return l->getFrom();
+			}
+			break;
+
+		case 2:
+			advance(l, 2);
+			return l->getFrom();
+			break;
+
+		case 3:
+			if ((++l1)->getPieceType() == 0) {
+				--l1;
+				advance(l, 2);
+				return l->getFrom();
+			}
+			else {
+				--l1;
+				advance(l, 4);
+				return l->getFrom();
+			}
+			break;
+		}
+	}
+	else {
+
+		switch (l->getPieceType()) {
+		case 0:
+			advance(l, -1);
+			return l->getFrom();
+			break;
+
+		case 1:
+			if ((++l1)->getPieceType() == 3) {
+				--l1;
+				advance(l, -3);
+				return l->getFrom();
+			}
+			else {
+				advance(l, -1);
+				return l->getFrom();
+			}
+			break;
+
+		case 2:
+			advance(l, -2);
+			return l->getFrom();
+			break;
+
+		case 3:
+			if ((--l1)->getPieceType() == 0) {
+				++l1;
+				advance(l, -2);
+				return l->getFrom();
+			}
+			else {
+				++l1;
+				advance(l, -4);
+				return l->getFrom();
+			}
+			break;
+		}
+	}
+}
+
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km) {
 
 	list<RailLine_piece>::iterator l = line.begin();
+	list<RailLine_piece>::iterator pS;
 	for (l;  l != line.end(); ++l){
-		if(l->getFrom() <= km && l->getTo() >= km)
+		pS = l;
+		if (l->getFrom() <= km && l->getTo() >= km) {
+			if ((++pS)->getFrom() == km && pS->getTo())
+				return pS;
 			break;
+		}
 	}
 	return l;
 }
