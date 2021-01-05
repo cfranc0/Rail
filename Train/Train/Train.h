@@ -92,6 +92,13 @@ public:
 	*/
 	void setTrack(int t);
 
+	/*setDirection
+	*@param d, direction
+	*- d>0 --> il treno va da km=0 a km>0
+	*- d<0 --> il treno va da km>0 a km=0
+	*/
+	void setDirection(int d);
+
 	/*setDelay
 	* @param d, delay
 	* @throw InvalidValueOfDelayEception, se d < 0;
@@ -113,8 +120,11 @@ public:
 
 	/*setSpeed
 	* @param s, speed
-	* @throw InvalidValueOfSpeedException, se la velocit� di crociera
-	* e' fuori dal range specifico del tipo di treno
+	* (Scelta progettuale)
+	* Se la velocità che si vuole inserire risulta 
+	* minore di 0 o maggiore del limite massimo
+	* si sceglie di impostare il valore della velocita' 
+	* con il massimo che puo' raggiungere. 
 	*/
 	virtual void setSpeed(int s) = 0;
 

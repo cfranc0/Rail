@@ -27,6 +27,14 @@ void Train::setKm(int kmm) {
 	km = kmm;
 }
 
+void  Train::setDirection(int d) {
+	if(d<=0)
+		direction = -1;
+	else {
+		direction = 1;
+	}
+}
+
 /*Definizione funzioni classi derivate */
 
 /*classe Regional*/
@@ -58,9 +66,14 @@ Regional::~Regional() {
 
 //setSpeed
 void Regional::setSpeed(int s) {
-	if (s < 0 || s > MAX_SPEED)throw InvalidValueOfSpeedException{};
-	speed = s;
+	if (s < 0 || s > MAX_SPEED) {
+		speed = MAX_SPEED;
+	}
+	else {
+		speed = s;
+	}
 }
+	
 
 /*classe High_speed*/
 
@@ -91,8 +104,12 @@ High_speed::~High_speed() {
 
 //setSpeed
 void High_speed::setSpeed(int s) {
-	if (s < 0 || s > MAX_SPEED)throw InvalidValueOfSpeedException{};
-	speed = s;
+	if (s < 0 || s > MAX_SPEED) {
+		speed = MAX_SPEED;
+	}
+	else {
+		speed = s;
+	}
 }
 
 /*classe High_speed_super*/
@@ -124,8 +141,12 @@ High_speed_super::~High_speed_super() {
 
 //setSpeed
 void High_speed_super::setSpeed(int s) {
-	if (s < 0 || s > MAX_SPEED)throw InvalidValueOfSpeedException{};
-	speed = s;
+	if (s < 0 || s > MAX_SPEED) {
+		speed = MAX_SPEED;
+	}
+	else {
+		speed = s;
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Train& t) {
