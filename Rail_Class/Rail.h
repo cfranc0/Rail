@@ -46,6 +46,32 @@ private:
 	 */
 	double getMaxSpeedFromType(int type);
 
+	/**
+	 * countMainStation
+	 * funzione che conta il numero di stazioni Principali
+	 * @return numero di stazioni principali
+	 */
+	int countMainStation();
+
+	/**
+	 * getMainStationList
+	 * @return lista delle stazioni principali
+	 */
+	std::list<Station> getMainStationsList();
+
+	/**
+	 * whereIsMainStation
+	 * @return vector che segnala ordine delle stazioni
+	 */
+	std::vector<int> whereIsMainStation();
+
+	/**
+	 * nextStop
+	 * @param t, treno
+	 * @return la prossima stazione
+	 */
+	Station nextStop(Train* t);
+
 public:
 	/*classe di eccezione*/
 	class EmptyStationListException {};
@@ -100,7 +126,7 @@ public:
 	 * Provides a list of the trains that exist within the specified
 	 * km range.
 	 */
-	list<Train*> whosThere(int _f, int _t);
+	std::list<Train*> whosThere(int _f, int _t);
 
 };
 //overload operator<<
