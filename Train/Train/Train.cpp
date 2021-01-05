@@ -44,7 +44,7 @@ Regional::Regional(const int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 1;
 	track = -1;
-	direction = d;
+	setDirection(d);
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -57,7 +57,7 @@ Regional::~Regional() {
 	ID = -1;
 	type = -1;
 	track = -1;
-	direction = -1;
+	direction =0;
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -82,7 +82,7 @@ High_speed::High_speed(int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 2;
 	track = -1;
-	direction = d;
+	setDirection(d);
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -119,7 +119,7 @@ High_speed_super::High_speed_super(int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 3;
 	track = -1;
-	direction = d;
+	setDirection(d);
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -132,7 +132,7 @@ High_speed_super::~High_speed_super() {
 	ID = -1;
 	type = -1;
 	track = -1;
-	direction = -1;
+	direction = 0;
 	speed = 0;
 	km = -1;
 	delay = 0;
