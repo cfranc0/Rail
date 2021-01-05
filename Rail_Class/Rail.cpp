@@ -136,7 +136,7 @@ void Rail::loadTimeTable(string tt) {
 		int duration_min;
 		int distance_km;
 		int time;
-		//int j = 0;
+		
 		for (it = myListOfStations.begin(); it != myListOfStations.end() && count_stat < token_vec_size; ++it) {
 
 			arrival_t = token[count_stat];
@@ -189,15 +189,12 @@ void Rail::loadTimeTable(string tt) {
 		switch (train_type) {
 		case 1:
 			t = new Regional(ID, direc, timeTablelist);
-			t->setDirection(direc);
 			break;
 		case 2:
 			t = new High_speed(ID, direc, timeTablelist);
-			t->setDirection(direc);
 			break;
 		case 3:
 			t = new High_speed_super(ID, direc, timeTablelist);
-			t->setDirection(direc);
 			break;
 		}
 		
@@ -253,20 +250,21 @@ list<Station> Rail::getMainStationsList() {
 	return mainStatList;
 }
 
-/*Station Rail::nextStop(Train* t) {
+Station Rail::nextStop(Train* t) {
 	int km = t->getKm();
+	list<Station> myListOfStation = stationsList;
 	list<Station>::iterator it;
-	it = stationsList.begin();
-	if (t->getDirection() == 1) {
-		while (it != stationsList.end() && km > it->getKm()) {
-			++it;
-		}
-	}
-	else {
+	it = myListOfStation.begin();
 
+	if (t->getDirection() < 0)
+		myListOfStation.reverse();
+
+	while (it != myListOfStation.end() && (it->getKm() - km) > 0) {
+		++it;
 	}
 	return *it;
-}*/
+}
+
 
 std::vector<int> Rail::whereIsMainStation() {
 	vector<int>stat(stationsList.size());
