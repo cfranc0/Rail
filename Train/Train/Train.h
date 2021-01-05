@@ -7,7 +7,7 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 #include <iostream>
-#include <List>
+#include <list>
 
 
  /*Classe di base*/
