@@ -88,7 +88,7 @@ public:
 
 	//int nextStation(int km, int direction);
 
-	int RailLine::nextParking(int km, int direction)
+	int nextParking(Train* t);
 
 	/**
 	* getRailLinePiece

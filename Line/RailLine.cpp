@@ -160,11 +160,11 @@ void RailLine::generateLine(list<Station> stations) {
 	}
 }*/
 
-int RailLine::nextParking(int km, int direction) {
-	list<RailLine_piece>::iterator l = getRailLinePiece(km);
+int RailLine::nextParking(Train* t) {
+	list<RailLine_piece>::iterator l = getRailLinePiece(t->getKm());
 	list<RailLine_piece>::iterator l1 = l;
 	list<RailLine_piece>::iterator l2 = l;
-	if (direction == 1) {
+	if (t->getDirection() == 1) {
 
 		switch (l->getPieceType()) {
 		case 0:
@@ -189,16 +189,7 @@ int RailLine::nextParking(int km, int direction) {
 			break;
 
 		case 3:
-			if ((++l1)->getPieceType() == 0) {
-				--l1;
-				advance(l, 2);
-				return l->getFrom();
-			}
-			else {
-				--l1;
-				advance(l, 4);
-				return l->getFrom();
-			}
+			return l->getFrom();
 			break;
 		}
 	}
@@ -228,19 +219,12 @@ int RailLine::nextParking(int km, int direction) {
 			break;
 
 		case 3:
-			if ((--l1)->getPieceType() == 0) {
-				++l1;
-				advance(l, -2);
-				return l->getFrom();
-			}
-			else {
-				++l1;
-				advance(l, -4);
-				return l->getFrom();
-			}
+			return l->getFrom();
 			break;
 		}
 	}
+
+	return 0;
 }
 
 list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km) {
