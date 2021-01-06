@@ -27,7 +27,6 @@ public:
 
 	/*Eccezioni*/
 	class InvalidTrackException {};
-	class InvalidValueOfDelayEception {};
 	class InvalidValueOfSpeedException {};
 	class InvalidValueOfKmException {};
 	/*metodi setter e getter che serviranno per la simulazione*/
@@ -101,7 +100,6 @@ public:
 
 	/*setDelay
 	* @param d, delay
-	* @throw InvalidValueOfDelayEception, se d < 0;
 	*/
 	void setDelay(int d);
 

@@ -17,7 +17,6 @@ void Train::setTrack(int t) {
 
 /*setDelay*/
 void Train::setDelay(int d) {
-	if (d < 0) throw InvalidValueOfDelayEception{};
 	delay = d;
 }
 
