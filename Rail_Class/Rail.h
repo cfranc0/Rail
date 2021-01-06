@@ -66,6 +66,13 @@ private:
 	std::vector<int> whereIsMainStation();
 
 	/**
+	* reverseStationList
+	* @return la lista delle stazioni con km che diventano
+	* km di distanza da stazione capolinea
+	*/
+	std::list<Station>reverseStationList(const std::list<Station>& l);
+
+	/**
 	 * nextStop
 	 * @param t, treno
 	 * @return la prossima stazione

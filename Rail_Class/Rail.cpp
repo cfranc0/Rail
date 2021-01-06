@@ -92,10 +92,18 @@ void Rail::loadTimeTable(string tt) {
 		int train_type = token[2];
 		int departure_t = token[3];
 		vector<int>times(countMainStation());
+
+		//rovescia l'ordine della lista delle stazioni se la direzione del treno 
+		//e' da capolinea a origine
+		if (direc == 1) {
+			myListOfStations = reverseStationList(myListOfStations);
+			reverse(whereMainStat.begin(), whereMainStat.end());
+		}
+
 		if (train_type == 2 || train_type == 3) {
 
 			times[0] = tmp;
-			int cnt = 1;
+			int cnt = 1;//count
 			while (istd >> tmp && cnt < times.size()) {
 				times[cnt] = tmp;
 				cnt++;
@@ -277,4 +285,17 @@ std::vector<int> Rail::whereIsMainStation() {
 		i++;
 	}
 	return stat;
+}
+
+std::list<Station> Rail::reverseStationList(const list<Station>& l) {
+	std::list<Station> myList = stationsList;
+	myList.reverse();
+	list<Station>::iterator i = myList.begin();
+	int kmfromEndStat = i->getKm();
+	list<Station>::iterator it;
+
+	for (it = myList.begin(); it != myList.end(); ++it) {
+		it->setKm(kmfromEndStat - (it->getKm()));
+	}
+	return myList;
 }
