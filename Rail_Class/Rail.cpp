@@ -60,7 +60,7 @@ void Rail::loadLine(string ld) {
 void Rail::loadTimeTable(string tt) {
 	/*copio la lista dentro una lista di supporto per
 	evitare di modificare la lista principale*/
-	list<Station>myListOfStations = stationsList;
+	list<Station>los = stationsList;
 
 	//controllo che stationList sia piena
 	if (stationsList.size() == 0) {
@@ -73,11 +73,12 @@ void Rail::loadTimeTable(string tt) {
 
 	string s = " ";//linea appena letta
 	int tmp = 0;//varibile di supporto
-	int token_vec_size = myListOfStations.size() + 3;
-	vector<int>whereMainStat = whereIsMainStation();
+	int token_vec_size = los.size() + 3;
+	vector<int>wms = whereIsMainStation();
 
 	/*ciclo che legge il file linea per linea*/
 	while (getline(ist, s)) {
+
 		istringstream istd(s);
 		vector<int>token(token_vec_size);//in questo modo ciascun elemento del vettore si inizializza a zero
 		int count = 0;
@@ -91,6 +92,10 @@ void Rail::loadTimeTable(string tt) {
 		int direc = token[1];
 		int train_type = token[2];
 		int departure_t = token[3];
+
+		/*Vettore e lista di copia*/
+		vector<int>whereMainStat = wms;
+		list<Station>myListOfStations = los;
 		vector<int>times(countMainStation());
 
 		//rovescia l'ordine della lista delle stazioni se la direzione del treno 
