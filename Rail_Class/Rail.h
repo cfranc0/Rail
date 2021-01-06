@@ -8,9 +8,9 @@
 #ifndef RAIL_H
 #define RAIL_H
 
-#include "Train.h"
-#include "Station.h"
-#include "RailLine.h"
+#include "../Train/Train.h"
+#include "../Station/Station.h"
+#include "../Line/RailLine.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>  
@@ -79,6 +79,17 @@ private:
 	 */
 	Station nextStop(Train* t);
 
+	/**
+	 * Provides a list of the trains that exist within the specified
+	 * km range.
+	 */
+	std::list<Train*> whosThere(int _f, int _t);
+	/**
+	 * Check if there is a fully free and direct track between _f and _t
+	 */
+	int routeThrough(Train* thisTrain, int _f, int _t);
+
+
 public:
 	/*classe di eccezione*/
 	class EmptyStationListException {};
@@ -128,12 +139,6 @@ public:
 	 * outputting to the console the succession of events
 	 */
 	void simulate();
-
-	/**
-	 * Provides a list of the trains that exist within the specified
-	 * km range.
-	 */
-	std::list<Train*> whosThere(int _f, int _t);
 
 };
 //overload operator<<

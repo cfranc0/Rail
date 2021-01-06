@@ -27,8 +27,7 @@ string parseTime(int _m) {
 void output(int l, int t, Train* tr, string an) {
   // Select the output level you wish to receive as output
   // 0 is default, 1 is debug, 2 is detailed
-  if (l > 2) return;
-  //if (tr->getID() != 4525) return;
+  if (l > 0) return;
 
   cout << parseTime(t) << " (";
 
@@ -105,7 +104,7 @@ int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
     //cout << "Checking ["<<rlp->getFrom()<<"."<<rlp->getTo()<<"] ="<<rlp->getRailSpeedLimit().size();
     if (rlp->getTo() == rlp->getFrom() && (_t != _f)) {/*cout<<" skipped\n";*/++rlp; continue;};
     if (rlp->getFrom() == _t && rlp->getTo() > _t) {/*cout<<" skipped\n";*/++rlp; continue;};
-    cout<<"\n";
+    //cout<<"\n";
 
     if (rlp->getRailSpeedLimit().size() == 0) break;
 

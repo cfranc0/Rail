@@ -1,4 +1,4 @@
-//DA_ELIMINARE ECCEZIONI IN CASO 
+//DA_ELIMINARE ECCEZIONI IN CASO
 
 
 /**
@@ -10,13 +10,13 @@
 
 #include "Station.h"
 
- 
+
 /*Definizione funzioni membro classe Main_station*/
 
 //costruttore
 Main_station::Main_station(std::string n, int kmm) {
 	if (kmm < 0) throw InvalidValueOfKmException{};
-	name = n;
+	name = n.substr(0, n.size() - 1);
 	km = kmm;
 	type = 0; //tipo 0 --> Stazione Principale
 }
@@ -40,10 +40,10 @@ Main_station::~Main_station() {
 /*Definizione funzioni membro classe Local_station*/
 
 //costruttore
-Local_station::Local_station(std::string n, int kmm) 
+Local_station::Local_station(std::string n, int kmm)
 {
 	if (kmm < 0) throw InvalidValueOfKmException{};
-	name = n;
+	name = n.substr(0, n.size() - 1);
 	km = kmm;
 	type = 1; //tipo 1 --> Stazione Locale
 }
@@ -66,6 +66,6 @@ std::ostream& operator<<(std::ostream& os, const Station& s) {
 	os << "Nome: " << s.getName()<<"\n";
 	os << "Distanza da origine: " << s.getKm() << "\n";
 	os << "Tipo: " << s.getType() << "\n";
-	
+
 	return os;
 }

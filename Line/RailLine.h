@@ -11,8 +11,8 @@
 #include <list>
 #include <iterator>
 
-#include "Station.h"
-#include "Train.h"
+#include "../Station/Station.h"
+#include "../Train/Train.h"
 
 /* Base class */
 class RailLine_piece {
