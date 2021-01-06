@@ -28,11 +28,7 @@ void Train::setKm(int kmm) {
 }
 
 void  Train::setDirection(int d) {
-	if(d<=0)
-		direction = -1;
-	else {
-		direction = 1;
-	}
+	direction = d;
 }
 
 /*Definizione funzioni classi derivate */
@@ -44,7 +40,7 @@ Regional::Regional(const int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 1;
 	track = -1;
-	setDirection(d);
+	direction = 1-2*d;
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -73,7 +69,7 @@ void Regional::setSpeed(int s) {
 		speed = s;
 	}
 }
-	
+
 
 /*classe High_speed*/
 
@@ -82,7 +78,7 @@ High_speed::High_speed(int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 2;
 	track = -1;
-	setDirection(d);
+	direction = 1-2*d;
 	speed = 0;
 	km = -1;
 	delay = 0;
@@ -119,7 +115,7 @@ High_speed_super::High_speed_super(int id, int d, std::list<int>& time) {
 	ID = id;
 	type = 3;
 	track = -1;
-	setDirection(d);
+	direction = 1-2*d;
 	speed = 0;
 	km = -1;
 	delay = 0;

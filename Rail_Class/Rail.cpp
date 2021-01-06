@@ -254,12 +254,13 @@ Station Rail::nextStop(Train* t) {
 	int km = t->getKm();
 	list<Station> myListOfStation = stationsList;
 	list<Station>::iterator it;
-	it = myListOfStation.begin();
 
 	if (t->getDirection() < 0)
 		myListOfStation.reverse();
 
-	while (it != myListOfStation.end() && (it->getKm() - km) > 0) {
+	it = myListOfStation.begin();
+
+	while (it != myListOfStation.end() && ((it->getKm() <= km && t->getDirection() > 0) || (it->getKm() >= km && t->getDirection() < 0)) ){
 		++it;
 	}
 	return *it;
