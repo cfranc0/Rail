@@ -159,8 +159,8 @@ int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
  */
 void Rail::simulate() {
 
-  const int MIN_TRAIN_SEPARATION = 10; // km
-  const int MIN_TRAIN_STOP = 5;        // min
+  constexpr int MIN_TRAIN_SEPARATION = 10; // km
+  constexpr int MIN_TRAIN_STOP = 5;        // min
 
   // Numbers of trains still to arrive at their destination
   int deltaTrains = trainsList.size();
