@@ -97,6 +97,9 @@ int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
     _t = tmp;
   }
 
+  if (_f < 0) _f = 0;
+  if (_t < 0) _t = 0;
+
   // Only counting the tracks that go in the direction of the train
   bool free[6];
   for (int i = 0; i < 6; i++) free[i] = (thisTrain->getDirection() == dir[i] );
