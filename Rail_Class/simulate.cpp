@@ -80,6 +80,11 @@ list<Train*> Rail::whosThere(int _f, int _t) {
  * The range [_f, _t] is taken as a single piece, meaning that
  * the possibility to switch track down the line is not allowed.
  * Only if a track is fully free between _f and _t, it will be returned.
+ *
+ * @param  thisTrain [description]
+ * @param  _f        >0
+ * @param  _t        >0
+ * @return           [description]
  */
 int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
   // Direcitions for each railway line
@@ -100,6 +105,7 @@ int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
   list<RailLine_piece> rl = line.getLine();
   auto rlp = rl.begin();
   while (rlp->getFrom() <= _t && rlp != rl.end()) {
+
     if (rlp->getTo() <= _f && _t != _f) {++rlp; continue;}
     /*cout << "Checking ["<<rlp->getFrom()<<"."<<rlp->getTo()<<"] ="<<rlp->getRailSpeedLimit().size();*/
     if (rlp->getTo() == rlp->getFrom() && (_t != _f)) {/*cout<<" skipped\n";*/++rlp; continue;};
@@ -184,8 +190,10 @@ void Rail::simulate() {
        */
       if (thisTrain->getExists() && thisTrain->getSpeed() != 0) {
 
-        // Checking if the next MIN_TRAIN_SEPARATION km zone has trains inside
+        // Calculating the position the train would be if he continued at its pace
+        // through the last minute
         int nextKm = thisTrain->getKm() + thisTrain->getDirection() * thisTrain->getSpeed() / 60;
+        if (nextKm < 0) nextKm = 0;
         // And where is the next station and parking area in order to adjust the speed
         int nextPKm = line.nextParking(thisTrain);
 
