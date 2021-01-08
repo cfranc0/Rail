@@ -99,14 +99,12 @@ int Rail::routeThrough(Train* thisTrain, int _f, int _t) {
   // Finding the number of continuos tracks within _f and _t
   list<RailLine_piece> rl = line.getLine();
   auto rlp = rl.begin();
-  while (rlp->getFrom() <= _t) {
+  while (rlp->getFrom() <= _t && rlp != rl.end()) {
     if (rlp->getTo() <= _f && _t != _f) {++rlp; continue;}
-    //cout << "Checking ["<<rlp->getFrom()<<"."<<rlp->getTo()<<"] ="<<rlp->getRailSpeedLimit().size();
+    /*cout << "Checking ["<<rlp->getFrom()<<"."<<rlp->getTo()<<"] ="<<rlp->getRailSpeedLimit().size();*/
     if (rlp->getTo() == rlp->getFrom() && (_t != _f)) {/*cout<<" skipped\n";*/++rlp; continue;};
     if (rlp->getFrom() == _t && rlp->getTo() > _t) {/*cout<<" skipped\n";*/++rlp; continue;};
-    //cout<<"\n";
-
-    if (rlp->getRailSpeedLimit().size() == 0) break;
+    /*cout<<"\n";*/
 
     if (rlp->getRailSpeedLimit().size() == 2) {
       free[2] = false; free[3] = false; free[4] = false; free[5] = false;
