@@ -81,3 +81,5 @@ typings/
 # VisualStudio folder
 .vs/
 vs/
+
+build

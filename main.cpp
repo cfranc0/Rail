@@ -11,8 +11,8 @@ using std::list;
 int main() {
 
   Rail r;
-  r.loadLine("line_description_1.txt");
-  r.loadTimeTable("timetables_2.txt");
+  r.loadLine("line_description.txt");
+  r.loadTimeTable("timetables.txt");
   r.simulate();
 
   /*list<Station> l = r.getStationsList();
