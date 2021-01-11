@@ -72,6 +72,11 @@ class RailLine {
 public:
 
 	/**
+	* I didn't make the copy constructor of RailLine
+	* because I think that every line is unique
+	*/
+
+	/**
 	* generateLine
 	* @param list<Station> : list of stations
 	* Create a new line
@@ -79,15 +84,10 @@ public:
 	void generateLine(std::list<Station> stations);
 
 	/**
-	* whosThere
-	* @param km_from : first km of the range
-	* @param km_to : Last km of the range
-	* @return a list of train that are between the specified Kms
+	* nextParking
+	* @param t : Train from where I want to find the next parking area
+	* @return the initial km of the next parking area
 	*/
-	//std::list<Train*> whosThere(int km_from, int km_to);
-
-	//int nextStation(int km, int direction);
-
 	int nextParking(Train* t);
 
 	/**
@@ -133,6 +133,11 @@ public:
 	* Create a new standard piece of line
 	*/
 	RailLine_piece_standard(int from, int to);
+
+	/**
+	* Block the possibility of making a copy of a RailLine_piece_standard();
+	*/
+	RailLine_piece_standard(const RailLine_piece_standard& l) = delete;
 };
 
 class RailLine_piece_approach : public RailLine_piece {
@@ -146,6 +151,11 @@ public:
 	* Create a new approach piece of line
 	*/
 	RailLine_piece_approach(int from, int to, int type);
+
+	/**
+	* Block the possibility of making a copy of a RailLine_piece_approach();
+	*/
+	RailLine_piece_approach(const RailLine_piece_approach& l) = delete;
 };
 
 class RailLine_piece_station : public RailLine_piece {
@@ -159,6 +169,11 @@ public:
 	* Create a new station piece of line
 	*/
 	RailLine_piece_station(int from, int to, int type);
+
+	/**
+	* Block the possibility of making a copy of a RailLine_piece_station();
+	*/
+	RailLine_piece_station(const RailLine_piece_station& l) = delete;
 };
 
 class RailLine_piece_parking : public RailLine_piece {
@@ -172,6 +187,11 @@ public:
 	* Create a new station piece of line
 	*/
 	RailLine_piece_parking(int from, int to, int type);
+
+	/**
+	* Block the possibility of making a copy of a RailLine_piece_parking();
+	*/
+	RailLine_piece_parking(const RailLine_piece_parking& l) = delete;
 };
 
 

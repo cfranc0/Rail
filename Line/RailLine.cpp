@@ -84,7 +84,7 @@ void RailLine::generateLine(list<Station> stations) {
 	list<Station>::iterator currS = stations.begin();
 	list<Station>::iterator prevS = stations.begin();
 	++currS;
-	for (currS; currS != stations.end(); ++currS, ++prevS){
+	for (; currS != stations.end(); ++currS, ++prevS){
 		if(prevS == stations.begin())
 			line.push_back(RailLine_piece_station(prevS->getKm(), prevS->getKm(), prevS->getType()));
 		line.push_back(RailLine_piece_approach(prevS->getKm(), prevS->getKm() + 5, prevS->getType()));
@@ -96,69 +96,6 @@ void RailLine::generateLine(list<Station> stations) {
 		lineLength = currS->getKm();
 	}
 }
-
-/*list<Train*> RailLine::whosThere(int km_from, int km_to) {
-	list<Train*> trains;
-	list<RailLine_piece>::iterator l = line.begin();
-	for (l; l != line.end(); ++l) {
-		if(l->getBlock() == true && l->getTo() >= km_from && l->getFrom() <= km_to){
-				list<Train*> trainsTemp = l->getCurrentTrains();
-				list<Train*>::iterator t = trainsTemp.begin();
-				for (t; t != trainsTemp.end(); ++t)
-					trains.push_back(&(*t));
-			}
-			else{
-				list<Train*> trainsTemp = l->getCurrentTrains();
-				list<Train*>::iterator t = trainsTemp.begin();
-				for (t; t != trainsTemp.end(); ++t)
-					trains.push_back(&(*t));
-				break;
-		}
-	}
-	return trains;
-}*/
-
-/*int RailLine::nextStation(int km, int direction){
-	list<RailLine_piece>::iterator l = getRailLinePiece(km);
-	list<RailLine_piece>::iterator l1 = l;
-	if(direction == 1){
-
-		switch (l->getPieceType()) {
-			case 0:
-				advance(l, 3);
-				return l;
-				break;
-
-			case 1:
-				if(l->getTo() == (++l1)->getFrom()){
-					--l1;
-					return (++l);
-				}
-				else{
-					advance(l, 5);
-					return l;
-				}
-				break;
-
-			case 2:
-				advance(l, 6);
-				return l;
-				break;
-
-			case 3:
-			if(l->getTo() == (++l1)->getFrom()){
-				--l1;
-				advance(l, 4);
-				return l;
-			}
-			else{
-				advance(l, 2);
-				return l;
-			}
-			break;
-		}
-	}
-}*/
 
 int RailLine::nextParking(Train* t) {
 	list<RailLine_piece>::iterator l = getRailLinePiece(t->getKm());
@@ -231,10 +168,10 @@ list<RailLine_piece>::iterator RailLine::getRailLinePiece(int km) {
 
 	list<RailLine_piece>::iterator l = line.begin();
 	list<RailLine_piece>::iterator pS;
-	for (l;  l != line.end(); ++l){
+	for (;  l != line.end(); ++l){
 		pS = l;
 		if (l->getFrom() <= km && l->getTo() >= km) {
-			if ((++pS)->getFrom() == km && pS->getTo())
+			if ((++pS)->getFrom() == km && pS->getTo()) // check if the next RailLine_piece is a station or a parking
 				return pS;
 			break;
 		}
@@ -257,7 +194,7 @@ int RailLine::getLineLength() const{
 ostream& operator<<(ostream& os, const RailLine& _line) {
 	list<RailLine_piece> _l = _line.getLine();
 	list<RailLine_piece>::iterator lineIt = _l.begin();
-	for(lineIt; lineIt != _l.end(); ++lineIt)
+	for(; lineIt != _l.end(); ++lineIt)
 	{
 		os << lineIt->getFrom() << " " << lineIt->getTo();
 	}
